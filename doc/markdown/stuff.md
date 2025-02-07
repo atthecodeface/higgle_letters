@@ -94,6 +94,18 @@ Fundamental to the operation of the type is the trait system. Each type above ha
 
 Often in a polymorphic hardware generation language it is necessary to have value types that depend on other value types; for example, the value type for the selector for a multiplexer is bit[N] and the value type for the data input is bit[M], where M=1<<N.
 
+## Component functions
+
+A component has inputs, outputs, clocks, interfaces, and a code implementation.
+
+The expectation is they will also have stateless functions that can be invoked to get some values; so the outputs of a component may not be critical for a user, so much as the functions that provide the (e.g.) validated data or requests.
+
+## Component events
+
+The thought is that a component could define events (such as write the alarm value, reenable alarm, cancel alarm, etc for an alarm clock module) which have an *implementation* in the module, but which are invoked from either a wrapper or an extension module.
+
+This would allow a CSR control interface - read/write in conjunctino with component functions - for modules with defined functionality.q
+
 ## Concepts for const reduce functions
 
   impl uint {
